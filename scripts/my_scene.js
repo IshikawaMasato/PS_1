@@ -20,7 +20,8 @@ class MyScene extends Phaser.Scene {
          // 単体画像をシーンに追加(X座標,Y座標,画像名)
         this.add.image(D_WIDTH/2, D_HEIGHT/2, 'background');        
         this.player1 =this.add.image(500, 350, 'taro');
-        this.player_direction = 1;
+        this.player1.angle=0;
+        this.player1_direction = 1;
     }
     
   // 毎フレーム実行される繰り返し処理
@@ -31,10 +32,11 @@ class MyScene extends Phaser.Scene {
         if (this.player1_direction == 1) {
             this.player1.x += 5;// 横方向へ移動を設定
             this.player1.y += 5;// 横方向へ移動を設定
-        } else {
+        }else {
             this.player1.x -= 5;// 横方向へ移動を設定
             this.player1.y -= 5;// 横方向へ移動を設定
         }
+        this.player1.angle += 5;
     }
 
 }
