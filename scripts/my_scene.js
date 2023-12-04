@@ -2,7 +2,6 @@
 // MyScene1クラス
 // 他のJSファイルから呼び出された場合はシーンを返す
 class MyScene extends Phaser.Scene {
-
     // 継承した「Phaser.Scene」クラスのコンストラクタの呼び出し
     constructor() {
         super({ key: 'MyScene', active: true });
@@ -24,6 +23,15 @@ class MyScene extends Phaser.Scene {
         this.player2 =this.add.image(200, 350, 'jori');
         // this.player1.angle=0;
         // this.player1_direction = 1;
+        this.add.text(600,400, 'MyWorld', { fontSize: '32px', fill: '#FFF' });
+        this.text =this.add.text(100, 50, "", {fontSize: '32px', fill: '#ffffff'});
+        ///WASDキーを検知できるようにする
+        this.keys = {};
+        this.keys.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.keys.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.keys.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.keys.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        
     }
     
   // 毎フレーム実行される繰り返し処理
@@ -43,15 +51,23 @@ class MyScene extends Phaser.Scene {
         let cursors = this.input.keyboard.createCursorKeys();
         if (cursors.left.isDown) {
             //console.log("Left!");
-            this.player1.x -= 3;// 左方向に移動
-            this.player2.x += 3;// 左方向に移動
+            this.player1.x -= 50;// 左方向に移動
+            this.player2.x += 50;// 左方向に移動
 
         } else if (cursors.right.isDown) {
             //console.log("Right!");
-            this.player1.x += 3;// 右方向に移動
-            this.player2.x -= 3;// 右方向に移動
-
+            this.player1.x += 50;// 右方向に移動
+            this.player2.x -= 50;// 右方向に移動
+        }
+        this.wasd_move(this.keys)
+    }
+    wasd_move(keys){
+        if(keys.keyS.isDown){  //Sが押されている時
+            this.text.text ="Hey!";
+        }else if(keys.keyA.isDown){  //Aが押されている時
+            this.text.text ="Hello!";
+        }else if(keys.keyD.isDown){ //Dが押されている時
+            this.text.destroy();
         }
     }
-
 }
