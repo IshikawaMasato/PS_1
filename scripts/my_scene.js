@@ -13,6 +13,7 @@ class MyScene extends Phaser.Scene {
         this.load.image('background', 'assets/background.png');
         this.load.image('taro', 'assets/taro.png');
         this.load.image('jori', 'assets/jori.png');
+        this.load.image('hanako', 'assets/hanako.png');
     }
 
     // シーン初期化処理
@@ -21,6 +22,7 @@ class MyScene extends Phaser.Scene {
         this.add.image(D_WIDTH/2, D_HEIGHT/2, 'background');        
         this.player1 =this.add.image(500, 350, 'taro');
         this.player2 =this.add.image(200, 350, 'jori');
+        this.player3 =this.add.image(100, 100, 'hanako');
         // this.player1.angle=0;
         // this.player1_direction = 1;
         this.add.text(600,400, 'MyWorld', { fontSize: '32px', fill: '#FFF' });
@@ -68,6 +70,9 @@ class MyScene extends Phaser.Scene {
             this.text.text ="Hello!";
         }else if(keys.keyD.isDown){ //Dが押されている時
             this.text.destroy();
+        }else if(keys.keyW.isDown){ //Dが押されている時
+            this.player3.x=Phaser.Math.Between(100, 400);
+            
         }
     }
 }
