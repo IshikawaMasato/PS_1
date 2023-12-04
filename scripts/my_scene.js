@@ -73,7 +73,7 @@ class MyScene extends Phaser.Scene {
         //     this.player1.x += 50;// 右方向に移動
         //     this.player2.x -= 50;// 右方向に移動
         // }
-        // this.wasd_move(this.keys)
+        this.wasd_move(this.keys)
 
         this._timeCounter += delta;
         if(this._timeCounter > 3000) {
