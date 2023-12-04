@@ -119,6 +119,6 @@ class MyScene extends Phaser.Scene {
         // ぶつかったときの処理
         this.text.setText("痛い！");
         this.text.setPosition(100, 150);
-        this.player3.disableBody(false, true);
+        this.player3.disableBody(true, true);
     }
 }
